@@ -16,12 +16,16 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/radar01.html',
+        templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/js_radar', {
+        templateUrl: 'views/js_radar.html',
+        controller: 'JsRadarCtrl'
+      })
+      .when('/ci_radar/:radar_name', {
+        templateUrl: 'views/ci_radar.html',
+        controller: 'CiRadarCtrl'
       })
       .otherwise({
         redirectTo: '/'

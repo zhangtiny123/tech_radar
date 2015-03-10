@@ -6,10 +6,11 @@ angular.module("techRadarApp").directive("chart", function() {
     restrict: 'E',
     replace: true,
     scope: {
-      config: '='
+      config: '=',
+      title: '='
     },
-    template: '<div id="chartdiv"> ',
-    link: function(scope, element, attrs) {
+    template: '<div id="chartdiv" class="main-background"> ',
+    link  : function(scope, element, attrs) {
       AmCharts.ready(function () {
         var chart;
         chart = new AmCharts.AmRadarChart();
@@ -19,7 +20,7 @@ angular.module("techRadarApp").directive("chart", function() {
         chart.radius = "40%";
         chart.realRadius = 20;
 
-        chart.addTitle("CI-PKG TECH RADAR", 15);
+        chart.addTitle(scope.title, 15);
 
         var valueAxis = new AmCharts.ValueAxis();
         valueAxis.gridType = "circles";
@@ -43,12 +44,18 @@ angular.module("techRadarApp").directive("chart", function() {
         graph.balloonText = "[[name]]: [[description]]";
         chart.addGraph(graph);
 
-        valueAxis.addGuide(getGuide(0,360,0,5,"DimGray",0.6));
+        //var guides = [];
+        //guides.push(getGuide(0, 360, 0, 5, "DimGray", 0.6));
+        //guides.push(getGuide(0, 360, 5, 10, "Gray", 0.6));
+        //guides.push(getGuide(0, 360, 10, 15, "DarkGray", 0.6));
+        //guides.push(getGuide(0, 360, 15, 20, "Silver", 0.6));
+        //
+        //
+        //valueAxis.addGuide(guides);
 
+        valueAxis.addGuide(getGuide(0, 360, 0, 5, "DimGray", 0.6));
         valueAxis.addGuide(getGuide(0, 360, 5, 10, "Gray", 0.6));
-
         valueAxis.addGuide(getGuide(0, 360, 10, 15, "DarkGray", 0.6));
-
         valueAxis.addGuide(getGuide(0, 360, 15, 20, "Silver", 0.6));
 
         chart.allLabels = [
@@ -73,6 +80,7 @@ angular.module("techRadarApp").directive("chart", function() {
             "y": 580
           }
         ];
+        console.log("run directive")
 
         chart.write(attrs.id);
       });

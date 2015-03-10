@@ -1,9 +1,9 @@
 body {
 	background-color: #FFFFFF;
-	margin-left: 32px;
-	margin-top: 20px;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-left: 70px;
+	margin-top: 30px;
+	margin-right: 0px;
+	margin-bottom: 0px;
 	font-size: 14px;
 	line-height:16px;
 }
@@ -33,6 +33,16 @@ td{
 }
 
 #chartdiv{
-    background-image: url("../images/background-blue.jpg");
     width:1300px; height:700px;
+}
+
+.main-background{
+  text-align: center;
+  height: 700px;
+  width: 1300px;
+    background-image: url("../images/background-blue.jpg");
+}
+
+.main-list{
+    align-content: center;
 }
